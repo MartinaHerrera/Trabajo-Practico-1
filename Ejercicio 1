@@ -1,0 +1,17 @@
+int led = 13;
+int pulsador = 2;
+int estado = HIGH;
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(2), cambio, CHANGE);
+}
+
+void loop(){}
+
+void cambio(){
+  Serial.println("Cambio de estado");
+  digitalWrite(13,estado);
+  estado=!estado;
+}
