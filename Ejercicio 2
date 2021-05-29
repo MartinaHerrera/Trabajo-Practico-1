@@ -1,0 +1,16 @@
+int led = 13;
+int estado = HIGH;
+int interruptor = 2;
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(2),cambio,CHANGE);
+}
+
+void loop(){}
+
+void cambio(){
+  digitalWrite(13,estado);
+  estado=!estado;
+}
