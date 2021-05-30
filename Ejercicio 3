@@ -1,0 +1,24 @@
+int pulsador = 2;
+int contador = 0;
+int inicioTimer;
+int duracionTimer = 5;
+int tiempo;
+boolean auxiliar = true;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(2, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(pulsador), contar, RISING);
+}
+
+void loop() {
+  delay(5000);
+  Serial.print("se apreto el boton "); 
+  Serial.println(contador); Serial.println("veces");
+  contador = 0;
+  
+}
+
+void contar () {
+  contador += 1;
+}
