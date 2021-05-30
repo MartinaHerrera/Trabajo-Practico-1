@@ -1,0 +1,55 @@
+int verde=3;
+int amarrillo=5;
+int rojo=4;
+int interruptor=2;
+boolean aux=true;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(verde,OUTPUT);
+  pinMode(amarrillo,OUTPUT);
+  pinMode(rojo,OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(interruptor), swichh, RISING);
+}
+
+ 
+
+void loop() {
+  
+  if (aux==true){
+  
+  digitalWrite(verde,HIGH);
+  delay(1000);
+  digitalWrite(verde,LOW);
+  
+  digitalWrite(amarrillo,HIGH);
+  delay(500);
+  digitalWrite(amarrillo,LOW);
+  
+  digitalWrite(rojo,HIGH);
+  delay(1000);
+  digitalWrite(rojo,LOW);
+}
+  else{
+    digitalWrite(verde,HIGH);
+   	digitalWrite(amarrillo,HIGH);
+   	digitalWrite(rojo,HIGH);
+  }
+}
+
+void swichh()
+{
+           
+     digitalWrite(verde,LOW);
+     digitalWrite(amarrillo,LOW);
+     digitalWrite(rojo,LOW);
+  if(aux==true){  
+    aux=false;
+    Serial.println("Activa");
+  }
+  
+  else{   //si aux es falso
+  Serial.println("Desactiva");
+    aux=true;
+  }
+ }
