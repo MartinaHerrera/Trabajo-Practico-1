@@ -1,0 +1,30 @@
+ int state = 0;
+ const int Trigger = 7;   
+ const int Echo = 6; 
+ int boton = 2;
+ const int i = 2;
+  
+void setup(){
+  Serial.begin(9600);
+  pinMode(Trigger, OUTPUT); 
+  pinMode(Echo, INPUT);  
+  pinMode(boton, OUTPUT);
+  digitalWrite(Trigger, LOW);
+  attachInterrupt(digitalPinToInterrupt(2),avisar,CHANGE);
+}
+
+void loop(){}
+  
+void avisar(){
+  long t; 
+  long d;
+  digitalWrite(Trigger, HIGH);
+  delayMicroseconds(10);          
+  digitalWrite(Trigger, LOW);
+  t = pulseIn(Echo, HIGH); 
+  d = t/59;     
+    
+  if (digitalRead(boton)== HIGH){
+  Serial.print("Distancia =  cm");
+  Serial.print(d);
+  }
